@@ -18,7 +18,7 @@ const Body = ({ children }) => <tbody>{children}</tbody>
 
 const Item = ({ id, task, onClick }) => (
   <tr>
-    <td><input type="checkbox" value={id} onClick={onClick}/></td>
+    <td><input type="checkbox" value={id} onClick={() => onClick(id)}/></td>
     <td>{task}</td>
   </tr>
 )
@@ -42,7 +42,7 @@ const Tasks = ({ items, onCheckedItems }) => {
     <Container className='table is-hoverable'>
       <Head />
       <Body>
-        {items.map(({ id, task }) => <Item id={id} task={task} key={id} onClick={() => onItemClicked(id)}/>)}
+        {items.map(({ id, task }) => <Item id={id} task={task} key={id} onClick={onItemClicked}/>)}
       </Body>
     </Container>
   )
