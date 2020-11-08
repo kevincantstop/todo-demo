@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tasks } from './Task';
+import { TaskPanel } from './Panel'
 import { getTasks } from './api'
 
 const AppContainer = styled.div`
@@ -24,6 +25,7 @@ function App() {
       <AppTitle className='title'>
         Tasks
       </AppTitle>
+      <TaskPanel />
       <Tasks items={tasks} onCheckedItems={onSelectedItems}/>
     </AppContainer>
   );
