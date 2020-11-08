@@ -20,22 +20,22 @@ const AppTitle = styled.header`
 
 const App = () => {
   const [enableDelete, setEnableDelete] = useState(false)
-  const [selected, setSelected] = useState([])
   const [tasks, setTasks] = useState([])
+  const getDoneTasks = (data = tasks) => data.filter(i => i.done)
 
   useEffect(() => {
     getTasks().then(data => {
       setTasks(data)
+
+      setEnableDelete(getDoneTasks(data).length > 0)
     })
   }, [])
 
   const handleSelectItems = async (items, data) => {
-    setEnableDelete(items.length > 0)
-
-    setSelected(items)
-
     const updated = await updateTasks(data)
     setTasks(updated)
+
+    setEnableDelete(getDoneTasks().length > 0)
   }
 
   const handleCreate = async task => {
@@ -46,8 +46,11 @@ const App = () => {
   }
 
   const handleDelete = async () => {
-    const data = await deleteTasks(selected)
+    const doneTasks = getDoneTasks()
+    const data = await deleteTasks(doneTasks.map(i => i.id))
+
     setTasks(data)
+    setEnableDelete(getDoneTasks(data).length > 0)
   }
 
   return (

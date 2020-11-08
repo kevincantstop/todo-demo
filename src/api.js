@@ -1,13 +1,10 @@
-let data = []
-
 const url = 'http://localhost:3001/'
 
 const getTasks = async () => {
   const response = await fetch(url, {
     method: 'GET'
   })
-  data = response.json()
-  return data
+  return response.json()
 }
 
 const addTask = async task => {
@@ -20,9 +17,7 @@ const addTask = async task => {
       'Content-Type': 'application/json'
     },
   })
-
-  data = response.json()
-  return data
+  return response.json()
 }
 
 const updateTasks = async tasks => {
@@ -34,12 +29,11 @@ const updateTasks = async tasks => {
     },
   })
 
-  data = response.json()
-  return data
+  return response.json()
 }
 
 const deleteTasks = async tasksIds => {
-  await fetch(url, {
+  const response = await fetch(url, {
     method: 'DELETE',
     body: JSON.stringify(tasksIds),
     headers: {
@@ -47,8 +41,7 @@ const deleteTasks = async tasksIds => {
     },
   })
 
-  data = data.filter(i => !tasksIds.includes(i.id))
-  return data
+  return response.json()
 }
 
 export {
