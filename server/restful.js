@@ -3,13 +3,12 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const store = require('./store')
+const { port } = require('./config')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-const port = 3001
 
 app.get('/', (req, res) => {
   return res.send(store.fetch())

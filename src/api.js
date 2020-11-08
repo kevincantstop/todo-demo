@@ -1,4 +1,6 @@
-const url = 'http://localhost:3001/'
+import { port } from '../server/config'
+
+const url = `http://localhost:${port}/`
 
 const getTasks = async () => {
   const response = await fetch(url, {
