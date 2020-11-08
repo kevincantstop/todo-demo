@@ -7,6 +7,9 @@
 
 In the project directory, you can run:
 
+### `yarn serve`
+Start the restful server. The server port can be changed in src/config.js
+
 ### `yarn start`
 
 Runs the app in the development mode.\
@@ -28,6 +31,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn serve`
-Start the restful server. The server port can be changed in src/config.js
