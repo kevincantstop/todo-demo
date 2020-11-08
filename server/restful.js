@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const store = require('./store')
-const { port } = require('./config')
+const { port } = require('../src/config')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())

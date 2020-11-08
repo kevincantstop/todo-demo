@@ -1,4 +1,4 @@
-import { port } from '../server/config'
+import { port } from './config'
 
 const url = `http://localhost:${port}/`
 
