@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.table`
@@ -24,29 +24,28 @@ const Item = ({ id, checked, task, onClick }) => (
 )
 
 const Tasks = ({ items, onCheckedItems }) => {
-  const [tasks, setTasks] = useState(items)
-
   const onItemClicked = id => {
-    setTasks(tasks.map(i => {
+    items.forEach(i => {
       if (i.id === id) {
         i.done = !i.done
       }
-      return i
-    }))
+    })
 
-    onCheckedItems(tasks.reduce((r, i) => {
+    const updatedIds = items.reduce((r, i) => {
       if (i.done) {
         r.push(i.id)
       }
       return r
-    }, []))
+    }, [])
+
+    onCheckedItems(updatedIds, items)
   }
 
   return (
     <Container className='table is-hoverable'>
       <Head/>
       <Body>
-        {tasks.map(({id, task, done}) => (
+        {items.map(({id, task, done}) => (
           <Item id={id} checked={done} task={task} key={id} onClick={onItemClicked}/>
         ))
         }
