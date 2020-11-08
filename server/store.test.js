@@ -1,6 +1,10 @@
 const store = require('./store')
 
 describe('Store Test', () => {
+  beforeEach(() => {
+    store.clear()
+  })
+
   test('add a task to empty store task id = 1', () => {
     const item = {
       task: 'task 1',
@@ -16,8 +20,6 @@ describe('Store Test', () => {
   })
 
   test('add multiple tasks task id should be auto-increment', () => {
-    store.clear()
-
     const item1 = {
       task: 'task 1',
       done: false
@@ -42,8 +44,6 @@ describe('Store Test', () => {
   })
 
   test('tasks can be deleted by id[array] from store', () => {
-    store.clear()
-
     const item1 = {
       task: 'task 1',
       done: false
@@ -55,8 +55,6 @@ describe('Store Test', () => {
   })
 
   test('data store can be successfully updated', () => {
-    store.clear()
-
     const items = [
       {
         id: 1,
