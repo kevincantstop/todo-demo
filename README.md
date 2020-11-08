@@ -17,7 +17,7 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Launches the data store test runner with jest.\
+Launches the data store test runner with jest.
 
 ### `yarn build`
 
