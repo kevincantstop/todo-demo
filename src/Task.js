@@ -16,33 +16,40 @@ const Head = () => (
 )
 const Body = ({ children }) => <tbody>{children}</tbody>
 
-const Item = ({ id, task, onClick }) => (
+const Item = ({ id, checked, task, onClick }) => (
   <tr>
-    <td><input type="checkbox" value={id} onClick={() => onClick(id)}/></td>
+    <td><input type="checkbox" checked={checked} onChange={() => onClick(id)}/></td>
     <td>{task}</td>
   </tr>
 )
 
 const Tasks = ({ items, onCheckedItems }) => {
-  const selected = new Set()
-  const update = id => {
-    if (selected.has(id)) {
-      selected.delete(id)
-    } else {
-      selected.add(id)
-    }
-  }
+  const [tasks, setTasks] = useState(items)
 
   const onItemClicked = id => {
-    update(id)
-    onCheckedItems(Array.from(selected))
+    setTasks(tasks.map(i => {
+      if (i.id === id) {
+        i.done = !i.done
+      }
+      return i
+    }))
+
+    onCheckedItems(tasks.reduce((r, i) => {
+      if (i.done) {
+        r.push(i.id)
+      }
+      return r
+    }, []))
   }
 
   return (
     <Container className='table is-hoverable'>
-      <Head />
+      <Head/>
       <Body>
-        {items.map(({ id, task }) => <Item id={id} task={task} key={id} onClick={onItemClicked}/>)}
+        {tasks.map(({id, task, done}) => (
+          <Item id={id} checked={done} task={task} key={id} onClick={onItemClicked}/>
+        ))
+        }
       </Body>
     </Container>
   )
