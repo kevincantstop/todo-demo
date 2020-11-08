@@ -1,6 +1,9 @@
 let data = []
 
 module.exports = {
+  clear: () => {
+    data = []
+  },
   fetch: () => data,
   add: created => {
     let nextId = 1
