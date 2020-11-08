@@ -1,26 +1,52 @@
-let data = [
-  {id: 1, task: 'Task 1', done: false},
-  {id: 2, task: 'Task 2', done: false},
-  {id: 3, task: 'Task 3', done: false},
-  {id: 4, task: 'Task 4', done: false},
-]
+let data = []
 
-const getTasks = () => data
+const url = 'http://localhost:3001/'
 
-const addTask = task => {
-  const nextId = Math.max(...data.map(i => i.id)) + 1
-  data.push({ id: nextId, task, done: false })
-  data = [...data]
-
+const getTasks = async () => {
+  const response = await fetch(url, {
+    method: 'GET'
+  })
+  data = response.json()
   return data
 }
 
-const updateTasks = tasks => {
-  data = tasks
+const addTask = async task => {
+  const created = { task, done: false }
+
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(created),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+
+  data = response.json()
   return data
 }
 
-const deleteTasks = tasksIds => {
+const updateTasks = async tasks => {
+  const response = await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(tasks),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+
+  data = response.json()
+  return data
+}
+
+const deleteTasks = async tasksIds => {
+  await fetch(url, {
+    method: 'DELETE',
+    body: JSON.stringify(tasksIds),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+
   data = data.filter(i => !tasksIds.includes(i.id))
   return data
 }

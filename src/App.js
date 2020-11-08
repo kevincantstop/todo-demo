@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Tasks } from './Task';
 import { TaskPanel } from './Panel'
@@ -18,37 +18,53 @@ const AppTitle = styled.header`
   font-size: 1.5rem;
 `;
 
-function App() {
+const App = () => {
   const [enableDelete, setEnableDelete] = useState(false)
   const [selected, setSelected] = useState([])
-  const [tasks, setTasks] = useState(getTasks())
+  const [tasks, setTasks] = useState([])
 
-  const handleSelectItems = (items, data) => {
+  useEffect(() => {
+    getTasks().then(data => {
+      setTasks(data)
+    })
+  }, [])
+
+  const handleSelectItems = async (items, data) => {
     setEnableDelete(items.length > 0)
 
     setSelected(items)
-    setTasks(updateTasks(data))
+
+    const updated = await updateTasks(data)
+    setTasks(updated)
   }
 
-  const handleCreate = task => {
+  const handleCreate = async task => {
     if (task) {
-      setTasks(addTask(task))
+      const data = await addTask(task)
+      setTasks(data)
     }
   }
 
-  const handleDelete = () => {
-    setTasks(deleteTasks(selected))
+  const handleDelete = async () => {
+    const data = await deleteTasks(selected)
+    setTasks(data)
   }
 
   return (
-    <AppContainer>
+    <>
       <AppTitle className='title'>
         Tasks
       </AppTitle>
       <TaskPanel onCreate={handleCreate} onDelete={handleDelete} showDelete={enableDelete}/>
       <Tasks items={tasks} onCheckedItems={handleSelectItems}/>
-    </AppContainer>
+    </>
   );
 }
 
-export default App;
+const Boot = () => (
+  <AppContainer>
+    <App/>
+  </AppContainer>
+)
+
+export default Boot;

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.css'
-import App from './App';
+import Boot from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Boot />
   </React.StrictMode>,
   document.getElementById('root')
 );
