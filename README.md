@@ -22,7 +22,7 @@ Solutions:
 1. Use correct distribution solutions.
 2. Make application servers stateless as much as possible.
 3. If the loads to server is huge consider using `Queues` (ActiveMQ, SQS etc).
-4. Make data modification atomic (Thread safe).
+4. Make data modification atomic (Thread safe, redis, memcache etc).
 5. Data sharding.
 ...Etc
 
