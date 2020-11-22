@@ -10,13 +10,13 @@ module.exports = {
       watch: true,
       increment_var : 'PORT',
       env: {
-        PORT: REST_PORT,
+        PORT: parseInt(REST_PORT),
       }
     },
     {
       //running it in fork mode but LB can also be run in cluster mode
       name: 'Load Balancer',
-      script: './server/dispatch.js',
+      script: './server/serve.js',
       watch: true,
       env: {
         REST_PORT,
