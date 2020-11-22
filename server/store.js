@@ -1,21 +1,18 @@
 let data = []
+let nextId = 1
 
 module.exports = {
   clear: () => {
     data = []
+    nextId = 1
   },
   fetch: () => data,
   add: created => {
-    let nextId = 1
+    created.id = `${created.id}-${nextId}`
+    nextId++
 
-    if (data.length > 0) {
-      nextId = Math.max(...data.map(i => i.id)) + 1
-    }
-    const task = {
-      id: nextId,
-      ...created
-    }
-    data.push(task)
+    data.push(created)
+    return data
   },
   update: updated => {
     data = updated

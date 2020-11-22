@@ -21,6 +21,11 @@ app.get('/instances', (req, res) => {
   })
 })
 
+app.get('/', async () => {
+  const data = dispacher.fetchAll()
+  return res.send(data)
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
