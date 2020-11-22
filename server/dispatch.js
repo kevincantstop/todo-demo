@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const { restfulHost } = require('../src/config')
-let { REST_INSTANCES, REST_PORT } = process.env
 
+const { REST_INSTANCES, REST_PORT } = process.env
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
 class Dispatcher {
@@ -13,12 +13,21 @@ class Dispatcher {
     return this.ports().map(port => `http://${restfulHost}:${port}/${action}`)
   }
 
+  clusters() {
+    return Array(parseInt(REST_INSTANCES)).fill(0).map((_, i) => i)
+  }
+
   clusterId() {
     return rand(0, parseInt(REST_INSTANCES) - 1)
   }
 
-  async request(url, options = null) {
-    const response = await fetch(url, options)
+  async request(url, options) {
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
     return response.json()
   }
 
@@ -35,9 +44,6 @@ class Dispatcher {
 
     await this.request(host, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({
         id: `task-${cluster}`,
         ...task
@@ -46,6 +52,26 @@ class Dispatcher {
 
     return this.fetchAll()
   }
+
+  async remove(ids) {
+    await this.update(ids, 'DELETE')
+    return this.fetchAll()
+  }
+
+  async update(ids, method='PUT') {
+    const items = this.clusters()
+    const hosts = this.urls()
+
+    for (let clusterId of items) {
+      await this.request(hosts[clusterId], {
+        method,
+        body: JSON.stringify(ids.filter(id => parseInt(id.split('-')[1]) === clusterId))
+      })
+    }
+
+    return this.fetchAll()
+  }
 }
 
 module.exports = Dispatcher
+

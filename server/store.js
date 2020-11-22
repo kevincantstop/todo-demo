@@ -14,8 +14,14 @@ module.exports = {
     data.push(created)
     return data
   },
-  update: updated => {
-    data = updated
+  update: ids => {
+    for (let item of data) {
+      if (ids.includes(item.id)) {
+        item.done = !item.done
+      }
+    }
+
+    return data
   },
   remove: ids => {
     data = data.filter(i => !ids.includes(i.id))

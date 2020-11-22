@@ -21,8 +21,23 @@ app.get('/instances', (req, res) => {
   })
 })
 
-app.get('/', async () => {
+app.get('/', (req, res) => {
   const data = dispacher.fetchAll()
+  return res.send(data)
+})
+
+app.post('/', (req, res) => {
+  const data = dispacher.add(req.body)
+  return res.send(data)
+})
+
+app.put('/', (req, res) => {
+  const data = dispacher.update(req.body)
+  return res.send(data)
+})
+
+app.delete('/', (req, res) => {
+  const data = dispacher.remove(req.body)
   return res.send(data)
 })
 

@@ -7,8 +7,8 @@ module.exports = {
       script: './server/restful.js',
       instances: REST_INSTANCES,
       exec_mode: 'cluster',
-      watch: true,
       increment_var : 'PORT',
+      autorestart: false,
       env: {
         PORT: parseInt(REST_PORT),
       }

@@ -58,16 +58,20 @@ describe('Store Test', () => {
   })
 
   test('data store can be successfully updated', () => {
-    const items = [
-      {
-        id: 'task-1-1',
-        task: 'task 1',
-        done: false
-      }
-    ]
+    const item = {
+      id: 'task-1',
+      task: 'task 1',
+      done: false
+    }
 
-    store.update(items)
+    store.add(item)
 
-    expect(store.fetch()).toEqual(items)
+    store.update(['task-1-1'])
+
+    expect(store.fetch()).toEqual([{
+      id: 'task-1-1',
+      task: 'task 1',
+      done: true
+    }])
   })
 })
