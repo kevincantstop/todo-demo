@@ -1,7 +1,8 @@
 # Todo List App Demo
 
 ## Screenshots
-
+# ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-app.jpg)
+# ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-pm2.jpg)
 
 ## Setup the project
 1. Clone the repo.
