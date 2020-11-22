@@ -1,14 +1,23 @@
 # Todo List App Demo
 
+## Screenshots
+
+
+## Setup the project
 1. Clone the repo.
 2. `yarn` or `npm i` to install dependencies.
+3. `Optional` If you want to monitor clusters status, better to run `npm i pm2 -g`
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn serve`
-Start the restful server. The server port can be changed in src/config.js
+Start the restful server clusters and load balancer, the default value of clusters amount is 4. \
+The server port can be changed in src/config.js \
+
+The restful servers can be scaled very easily, just need to change the `REST_INSTANCES=4`. \
+As the load balancer is stateless, so the load balancer server can also be scaled easily. \
 
 ### `yarn start`
 
@@ -21,13 +30,3 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the data store test runner with jest.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

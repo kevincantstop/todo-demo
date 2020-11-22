@@ -16,8 +16,8 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "jest",
     "serve": "REST_INSTANCES=4 REST_PORT=8000 node ./server/start.js"
   },

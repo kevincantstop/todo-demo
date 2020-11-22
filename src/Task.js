@@ -38,7 +38,7 @@ const Tasks = ({ items, onCheckedItems }) => {
       return r
     }, [])
 
-    onCheckedItems(updatedIds, items)
+    onCheckedItems(updatedIds, [id])
   }
 
   return (
