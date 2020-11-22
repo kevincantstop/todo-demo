@@ -12,6 +12,16 @@ module.exports = {
       env: {
         PORT: REST_PORT,
       }
+    },
+    {
+      //running it in fork mode but LB can also be run in cluster mode
+      name: 'Load Balancer',
+      script: './server/dispatch.js',
+      watch: true,
+      env: {
+        REST_PORT,
+        REST_INSTANCES,
+      }
     }
   ]
 }

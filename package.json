@@ -18,7 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "serve": "REST_INSTANCES=2 REST_PORT=8000 node ./server/start.js"
+    "serve": "REST_INSTANCES=4 REST_PORT=8000 node ./server/start.js"
   },
   "eslintConfig": {
     "extends": [
