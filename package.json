@@ -7,6 +7,8 @@
     "bulma": "^0.9.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "pm2": "^4.5.0",
+    "pm2-promise": "^2.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -16,7 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "serve": "node ./server/restful.js"
+    "serve": "REST_INSTANCES=2 REST_PORT=8000 node ./server/start.js"
   },
   "eslintConfig": {
     "extends": [

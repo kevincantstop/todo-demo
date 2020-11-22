@@ -3,7 +3,8 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const store = require('./store')
-const { port } = require('../src/config')
+
+const { PORT } = process.env
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
@@ -29,6 +30,6 @@ app.delete('/', (req, res) => {
   return res.send(store.fetch())
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 })
