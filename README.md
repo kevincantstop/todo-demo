@@ -6,7 +6,7 @@
 ## Updates
 1. Make restful server scalable so that data transfer / synchronization can be more efficient.
 2. Added pm2 as the load balancer.
-3. Used `Snowflake` like algorithms to make task id unique in all clusters, but it's simplified.
+3. Used `Snowflake` like algorithm to make task id unique in all clusters, but it's simplified.
 
 ## Screenshots
 # ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-app.jpg)
