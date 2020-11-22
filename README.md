@@ -4,13 +4,31 @@
 # ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-app.jpg)
 # ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-pm2.jpg)
 
+## Requests
+
+### How to make the synchronization process between devices efficient? / How to optimize network bandwidth usage?
+Solutions:
+1. Make the restful server scalable so that read/writes requests can be redirected to different servers.
+2. Use Http/v2 over Http/v1.
+3. Compress server requests/responses.
+4. Only send necessary data to servers instead of complete / large objects.
+...(So many ways)
+
+### How to ensure data integrity?
+Solutions:
+1. Use correct distribution solutions.
+2. Make application servers stateless as much as possible.
+3. If the loads to server is huge consider using `Queues` (ActiveMQ, SQS etc).
+4. Make data modification atomic (Thread safe).
+5. Data sharding.
+...Etc
+
 ## Setup the project
 1. Clone the repo.
 2. `yarn` or `npm i` to install dependencies.
 3. `Optional` If you want to monitor clusters status, better to run `npm i pm2 -g`
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `yarn serve`
