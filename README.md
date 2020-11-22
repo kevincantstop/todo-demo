@@ -18,6 +18,7 @@ The server port can be changed in `src/config.js`
 
 The restful servers can be scaled very easily, just need to change the `REST_INSTANCES=4`.
 As the load balancer is stateless, so the load balancer server can also be scaled easily.
+Due to the configuration for now, the load balancer is scaled based on the number of the CPUs.
 
 ### `yarn start`
 
