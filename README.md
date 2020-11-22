@@ -21,6 +21,7 @@ Solutions:
 3. Compress server requests/responses.
 4. Only send necessary data to servers instead of complete / large objects.
 5. Asynchronous over Synchronous
+
 ...(So many ways)
 
 ### How to ensure data integrity?
