@@ -31,6 +31,7 @@ Solutions:
 3. If the loads to server is huge consider using `Queues` (ActiveMQ, SQS etc).
 4. Make data modification atomic (Thread safe, redis, memcache etc).
 5. Data sharding.
+
 ...Etc
 
 ## Setup the project
