@@ -1,5 +1,8 @@
 # Todo List App Demo
 
+## Design
+# ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-arch.jpg)
+
 ## Screenshots
 # ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-app.jpg)
 # ![APP](https://raw.githubusercontent.com/kevincantstop/todo-demo/main/screenshot-pm2.jpg)
